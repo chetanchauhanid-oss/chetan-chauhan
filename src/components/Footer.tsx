@@ -1,6 +1,6 @@
 "use client";
 
-import { Instagram, Linkedin, Twitter, ArrowUp } from "lucide-react";
+import { Instagram, Linkedin, MessageCircle, ArrowUp } from "lucide-react";
 
 export function Footer() {
     const scrollToTop = () => {
@@ -19,15 +19,28 @@ export function Footer() {
                             Chetan Chauhan Interiors is a boutique architectural firm specializing in luxury residential and commercial design. We create spaces that are as functional as they are beautiful.
                         </p>
                         <div className="flex space-x-4">
-                            {[Instagram, Linkedin, Twitter].map((Icon, i) => (
-                                <a
-                                    key={i}
-                                    href="#"
-                                    className="w-10 h-10 border border-zinc-800 flex items-center justify-center rounded-full hover:bg-gold hover:border-gold transition-all duration-300"
-                                >
-                                    <Icon size={18} />
-                                </a>
-                            ))}
+                            <a
+                                href="#"
+                                className="w-10 h-10 border border-zinc-800 flex items-center justify-center rounded-full hover:bg-gold hover:border-gold transition-all duration-300"
+                            >
+                                <Instagram size={18} />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/chetan-chauhan-180214kc"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 border border-zinc-800 flex items-center justify-center rounded-full hover:bg-gold hover:border-gold transition-all duration-300"
+                            >
+                                <Linkedin size={18} />
+                            </a>
+                            <a
+                                href="https://wa.me/919558131402"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-10 h-10 border border-zinc-800 flex items-center justify-center rounded-full hover:bg-gold hover:border-gold transition-all duration-300"
+                            >
+                                <MessageCircle size={18} />
+                            </a>
                         </div>
                     </div>
 

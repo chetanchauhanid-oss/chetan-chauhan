@@ -71,6 +71,17 @@ export function ContactForm() {
                                 </div>
 
                                 <div className="space-y-2">
+                                    <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Phone Number</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        required
+                                        className="w-full bg-transparent border-b border-zinc-200 py-3 focus:outline-none focus:border-gold transition-colors font-sans text-zinc-900"
+                                        placeholder="Enter your phone number"
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Project Type</label>
                                     <select
                                         name="project-type"

@@ -47,83 +47,59 @@ export function ContactForm() {
                                 data-netlify="true"
                                 className="space-y-6"
                             >
-                                {/* Essential Hidden Field */}
                                 <input type="hidden" name="form-name" value="inquiry" />
 
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Full Name</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        required
-                                        className="w-full bg-transparent border-b border-zinc-200 py-3 focus:outline-none focus:border-gold transition-colors font-sans text-zinc-900"
-                                        placeholder="Enter your name"
-                                    />
+                                {/* Name */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                    <input type="text" name="name" required placeholder="Enter your name" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none" />
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Email Address</label>
-                                    <input
-                                        type="email"
-                                        name="email"
-                                        required
-                                        className="w-full bg-transparent border-b border-zinc-200 py-3 focus:outline-none focus:border-gold transition-colors font-sans text-zinc-900"
-                                        placeholder="Enter your email"
-                                    />
+                                {/* Email */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                    <input type="email" name="email" required placeholder="Enter your email" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none" />
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Phone Number</label>
-                                    <input
-                                        type="text"
-                                        name="phone"
-                                        required
-                                        className="w-full bg-transparent border-b border-zinc-200 py-3 focus:outline-none focus:border-gold transition-colors font-sans text-zinc-900"
-                                        placeholder="Enter your phone number"
-                                    />
+                                {/* Phone */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                    <input type="tel" name="phone" placeholder="Enter your phone number" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none" />
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Project Type</label>
+                                {/* Dropdown Service - KEEPING THIS */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
                                     <div className="relative">
                                         <select
                                             name="service"
                                             required
-                                            className="appearance-none w-full bg-transparent border-b border-zinc-200 py-3 text-zinc-900 focus:outline-none focus:border-gold transition-colors font-sans rounded-none"
+                                            className="appearance-none w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-black transition-colors rounded-none"
                                         >
-                                            <option value="" disabled selected>Select project type</option>
+                                            <option value="" disabled selected>Select a project type...</option>
                                             <option value="Residential">Residential Design</option>
                                             <option value="Commercial">Commercial/Office</option>
                                             <option value="Hospitality">Hospitality</option>
                                             <option value="Other">Other</option>
                                         </select>
-                                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-zinc-400">
-                                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
-                                            </svg>
+                                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-400">
+                                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Message</label>
-                                    <textarea
-                                        name="message"
-                                        required
-                                        rows={4}
-                                        className="w-full bg-transparent border-b border-zinc-200 py-3 focus:outline-none focus:border-gold transition-colors font-sans text-zinc-900 resize-none"
-                                        placeholder="Tell us about your project"
-                                    />
+                                {/* Message */}
+                                <div>
+                                    <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                    <textarea name="message" required rows={4} placeholder="Tell us about your project" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none resize-none"></textarea>
                                 </div>
 
-                                <motion.button
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
+                                <button
                                     type="submit"
-                                    className="w-full py-5 bg-zinc-900 text-white font-sans text-xs uppercase tracking-[0.3em] flex items-center justify-center gap-3 hover:bg-gold transition-colors duration-500 shadow-lg shadow-zinc-200"
+                                    className="w-full bg-black text-white py-4 uppercase tracking-widest text-xs hover:bg-gray-800 transition-all duration-300"
                                 >
-                                    Send Inquiry <Send size={14} />
-                                </motion.button>
+                                    Send Inquiry
+                                </button>
                             </form>
                         </div>
                     </div>

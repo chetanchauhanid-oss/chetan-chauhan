@@ -4,6 +4,12 @@ import { motion } from "framer-motion";
 import { Send, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
+const encode = (data: any) => {
+    return Object.keys(data)
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+}
+
 export function ContactForm() {
     const [formData, setFormData] = useState({
         name: "",
@@ -25,20 +31,27 @@ export function ContactForm() {
         setStatus("submitting");
 
         const myForm = e.currentTarget;
-        const data = new FormData(myForm);
-        // CRITICAL FIX: Manually force the Netlify ID tag
-        data.append("form-name", "contact");
+
+        // Manually gather data to ensure no hidden types break it
+        const data: any = {
+            "form-name": "inquiry",
+            name: (myForm.elements.namedItem("name") as HTMLInputElement).value,
+            email: (myForm.elements.namedItem("email") as HTMLInputElement).value,
+            phone: (myForm.elements.namedItem("phone") as HTMLInputElement).value,
+            service: (myForm.elements.namedItem("service") as HTMLInputElement).value,
+            message: (myForm.elements.namedItem("message") as HTMLTextAreaElement).value,
+        };
 
         try {
             await fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: new URLSearchParams(data as any).toString(),
+                body: encode(data),
             });
 
             setStatus("success");
-            alert("Thank you! We have received your inquiry.");
-            myForm.reset(); // Clear the form after success
+            alert("Thank you! Inquiry Sent.");
+            myForm.reset();
             setFormData({
                 name: "",
                 email: "",
@@ -49,7 +62,7 @@ export function ContactForm() {
         } catch (error) {
             console.error("Form submission error:", error);
             setStatus("error");
-            alert("Submission failed. Please try again.");
+            alert("Submission failed.");
         }
     };
 
@@ -113,13 +126,13 @@ export function ContactForm() {
                                 </motion.div>
                             ) : (
                                 <form
-                                    name="contact"
+                                    name="inquiry"
                                     method="POST"
                                     data-netlify="true"
                                     className="space-y-6"
                                     onSubmit={handleSubmit}
                                 >
-                                    <input type="hidden" name="form-name" value="contact" />
+                                    <input type="hidden" name="form-name" value="inquiry" />
 
                                     <div className="space-y-2">
                                         <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Full Name</label>

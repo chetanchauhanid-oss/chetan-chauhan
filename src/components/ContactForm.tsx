@@ -31,7 +31,6 @@ export function ContactForm() {
         const params = new URLSearchParams();
         // Manually iterate to be safe
         params.append("form-name", "inquiry");
-        params.append("bot-field", ""); // Empty bot field
         params.append("name", formData.get("name") as string);
         params.append("email", formData.get("email") as string);
         params.append("phone", formData.get("phone") as string);
@@ -129,7 +128,6 @@ export function ContactForm() {
                                     onSubmit={handleSubmit}
                                 >
                                     <input type="hidden" name="form-name" value="inquiry" />
-                                    <input type="hidden" name="bot-field" />
 
                                     <div className="space-y-2">
                                         <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Full Name</label>

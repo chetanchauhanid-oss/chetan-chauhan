@@ -4,12 +4,6 @@ import { motion } from "framer-motion";
 import { Send, CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
-const encode = (data: any) => {
-    return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-        .join("&");
-}
-
 export function ContactForm() {
     const [formData, setFormData] = useState({
         name: "",
@@ -31,22 +25,24 @@ export function ContactForm() {
         setStatus("submitting");
 
         const myForm = e.currentTarget;
+        const formData = new FormData(myForm);
 
-        // Manually gather data to ensure no hidden types break it
-        const data: any = {
-            "form-name": "inquiry",
-            name: (myForm.elements.namedItem("name") as HTMLInputElement).value,
-            email: (myForm.elements.namedItem("email") as HTMLInputElement).value,
-            phone: (myForm.elements.namedItem("phone") as HTMLInputElement).value,
-            service: (myForm.elements.namedItem("service") as HTMLInputElement).value,
-            message: (myForm.elements.namedItem("message") as HTMLTextAreaElement).value,
-        };
+        // STANDARD FIX: Use URLSearchParams to handle encoding automatically
+        const params = new URLSearchParams();
+        // Manually iterate to be safe
+        params.append("form-name", "inquiry");
+        params.append("bot-field", ""); // Empty bot field
+        params.append("name", formData.get("name") as string);
+        params.append("email", formData.get("email") as string);
+        params.append("phone", formData.get("phone") as string);
+        params.append("service", formData.get("service") as string);
+        params.append("message", formData.get("message") as string);
 
         try {
             await fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: encode(data),
+                body: params.toString(),
             });
 
             setStatus("success");
@@ -133,6 +129,7 @@ export function ContactForm() {
                                     onSubmit={handleSubmit}
                                 >
                                     <input type="hidden" name="form-name" value="inquiry" />
+                                    <input type="hidden" name="bot-field" />
 
                                     <div className="space-y-2">
                                         <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Full Name</label>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submission Received | Chetan Chauhan Interiors</title>
+    <title>Submission Received | Chetan Chauhan</title>
     <style>
         body {
             font-family: 'Times New Roman', serif;
@@ -13,23 +13,30 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f9f9f9;
+            background-color: #fafafa;
+            color: #1a1a1a;
         }
 
         .card {
             background: white;
-            padding: 40px;
+            padding: 60px 40px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border: 1px solid #D4AF37;
-            max-width: 400px;
-            animation: fadeIn 0.8s ease-out;
+            border: 1px solid #e5e5e5;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .icon {
+            font-size: 40px;
+            color: #D4AF37;
+            /* Gold */
+            margin-bottom: 20px;
         }
 
         h1 {
-            color: #1a1a1a;
-            margin-bottom: 10px;
+            font-size: 32px;
             font-weight: normal;
+            margin-bottom: 15px;
             letter-spacing: 1px;
         }
 
@@ -37,42 +44,33 @@
             color: #666;
             margin-bottom: 30px;
             line-height: 1.6;
+            font-size: 16px;
         }
 
-        a {
+        .btn {
             text-decoration: none;
             color: white;
-            background-color: #000;
-            padding: 12px 24px;
+            background-color: #1a1a1a;
+            padding: 15px 30px;
             text-transform: uppercase;
-            font-size: 11px;
+            font-size: 12px;
             letter-spacing: 2px;
-            transition: background-color 0.3s ease;
+            transition: background 0.3s;
         }
 
-        a:hover {
+        .btn:hover {
             background-color: #D4AF37;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
 
 <body>
     <div class="card">
+        <div class="icon">✦</div>
         <h1>Thank You</h1>
-        <p>Your inquiry has been successfully received. <br> We will get back to you shortly.</p>
-        <a href="/">Return to Website</a>
+        <p>Your inquiry has been successfully received. <br>Our team will review your project details and get back to
+            you shortly.</p>
+        <a href="/" class="btn">Return to Portfolio</a>
     </div>
 </body>
 

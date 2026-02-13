@@ -9,51 +9,44 @@ export function ContactForm() {
         name: "",
         email: "",
         phone: "",
-        projectType: "",
+        service: "",
         message: "",
-        "bot-field": "",
     });
 
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-
-    const encode = (data: any) => {
-        return Object.keys(data)
-            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-            .join("&");
-    };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setStatus("submitting");
 
+        const myForm = e.currentTarget;
+        const data = new FormData(myForm);
+
         try {
-            const response = await fetch("/", {
+            await fetch("/", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: encode({ "form-name": "contact", ...formData })
+                body: new URLSearchParams(data as any).toString(),
             });
 
-            if (response.ok) {
-                setStatus("success");
-                setFormData({
-                    name: "",
-                    email: "",
-                    phone: "",
-                    projectType: "",
-                    message: "",
-                    "bot-field": "",
-                });
-            } else {
-                setStatus("error");
-            }
+            setStatus("success");
+            alert("Thank you! We have received your inquiry.");
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                service: "",
+                message: "",
+            });
         } catch (error) {
             console.error("Form submission error:", error);
             setStatus("error");
+            alert("Submission failed. Please try again.");
         }
     };
 
@@ -120,14 +113,10 @@ export function ContactForm() {
                                     name="contact"
                                     method="POST"
                                     data-netlify="true"
-                                    netlify-honeypot="bot-field"
                                     className="space-y-6"
                                     onSubmit={handleSubmit}
                                 >
                                     <input type="hidden" name="form-name" value="contact" />
-                                    <p className="hidden">
-                                        <label>Don’t fill this out if you’re human: <input name="bot-field" value={formData["bot-field"]} onChange={handleChange} /></label>
-                                    </p>
 
                                     <div className="space-y-2">
                                         <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Full Name</label>
@@ -171,8 +160,8 @@ export function ContactForm() {
                                     <div className="space-y-2">
                                         <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Project Type</label>
                                         <select
-                                            name="projectType"
-                                            value={formData.projectType}
+                                            name="service"
+                                            value={formData.service}
                                             onChange={handleChange}
                                             className="w-full bg-transparent border-b border-zinc-200 py-3 focus:outline-none focus:border-gold transition-colors font-sans text-zinc-900 appearance-none pointer-events-auto"
                                             required

@@ -44,9 +44,13 @@ export function ContactForm() {
                                 name="contact"
                                 method="POST"
                                 data-netlify="true"
+                                netlify-honeypot="bot-field"
                                 className="space-y-6"
                             >
                                 <input type="hidden" name="form-name" value="contact" />
+                                <p className="hidden">
+                                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                                </p>
 
                                 <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Full Name</label>

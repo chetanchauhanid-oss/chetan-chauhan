@@ -85,13 +85,24 @@ export function ContactForm() {
 
                                 <div className="space-y-2">
                                     <label className="text-[10px] uppercase tracking-widest text-zinc-500 font-sans">Project Type</label>
-                                    <input
-                                        type="text"
-                                        name="service"
-                                        required
-                                        className="w-full bg-transparent border-b border-zinc-200 py-3 focus:outline-none focus:border-gold transition-colors font-sans text-zinc-900"
-                                        placeholder="Project type (Residential/Commercial)"
-                                    />
+                                    <div className="relative">
+                                        <select
+                                            name="service"
+                                            required
+                                            className="appearance-none w-full bg-transparent border-b border-zinc-200 py-3 text-zinc-900 focus:outline-none focus:border-gold transition-colors font-sans rounded-none"
+                                        >
+                                            <option value="" disabled selected>Select project type</option>
+                                            <option value="Residential">Residential Design</option>
+                                            <option value="Commercial">Commercial/Office</option>
+                                            <option value="Hospitality">Hospitality</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-zinc-400">
+                                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div className="space-y-2">

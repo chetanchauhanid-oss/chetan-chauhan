@@ -43,6 +43,7 @@ export function ContactForm() {
                             <form
                                 name="inquiry"
                                 method="POST"
+                                action="/success.html"
                                 data-netlify="true"
                                 className="space-y-6"
                             >

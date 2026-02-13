@@ -26,6 +26,8 @@ export function ContactForm() {
 
         const myForm = e.currentTarget;
         const data = new FormData(myForm);
+        // CRITICAL FIX: Manually force the Netlify ID tag
+        data.append("form-name", "contact");
 
         try {
             await fetch("/", {
@@ -36,6 +38,7 @@ export function ContactForm() {
 
             setStatus("success");
             alert("Thank you! We have received your inquiry.");
+            myForm.reset(); // Clear the form after success
             setFormData({
                 name: "",
                 email: "",

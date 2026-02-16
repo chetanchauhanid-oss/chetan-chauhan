@@ -53,6 +53,31 @@ export function Navbar() {
                                 {link.name}
                             </a>
                         ))}
+
+                        {/* Google Translate Widget */}
+                        <div className="ml-4 flex items-center">
+                            <div id="google_translate_element"></div>
+                            <script type="text/javascript">
+                                {`
+                                function googleTranslateElementInit() {
+                                    new google.translate.TranslateElement(
+                                    {
+                                        pageLanguage: 'en', 
+                                        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                                        autoDisplay: false
+                                    }, 
+                                    'google_translate_element'
+                                    );
+                                }
+                                `}
+                            </script>
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                            <style>{`
+                                .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
+                                .goog-te-gadget-icon { display: none !important; }
+                                .goog-te-menu-value span { color: inherit !important; font-family: 'Times New Roman', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; }
+                            `}</style>
+                        </div>
                     </div>
 
                     {/* Mobile Menu Toggle */}

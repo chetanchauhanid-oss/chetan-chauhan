@@ -119,20 +119,6 @@ export function Footer() {
                         </span>
                     </button>
                 </div>
-
-                {/* Google Translate Widget */}
-                <div className="mt-8 border-t border-gray-900 pt-8 text-center">
-                    <p className="text-gray-600 text-xs mb-2">Select Language</p>
-                    <div id="google_translate_element" className="inline-block"></div>
-                    <script type="text/javascript">
-                        {`
-                        function googleTranslateElementInit() {
-                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                        }
-                        `}
-                    </script>
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                </div>
             </div>
         </footer>
     );

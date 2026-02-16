@@ -76,13 +76,29 @@ export function Footer() {
                         <p className="font-sans text-sm text-zinc-400">
                             Subscribe to stay updated on our latest projects and design insights.
                         </p>
-                        <form className="flex flex-col space-y-3">
-                            <input
-                                type="email"
-                                placeholder="Email Address"
-                                className="bg-transparent border-b border-zinc-800 py-3 focus:outline-none focus:border-gold transition-colors text-sm"
-                            />
-                            <button className="text-[10px] uppercase tracking-widest text-gold text-left hover:text-white transition-colors">
+                        <form
+                            name="newsletter"
+                            method="POST"
+                            action="/success.html"
+                            data-netlify="true"
+                            className="space-y-4"
+                        >
+                            <input type="hidden" name="form-name" value="newsletter" />
+
+                            <div className="relative">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email Address"
+                                    required
+                                    className="w-full bg-transparent border-b border-gray-800 py-2 text-gray-300 focus:outline-none focus:border-gold-500 transition-colors placeholder-gray-600"
+                                />
+                            </div>
+
+                            <button
+                                type="submit"
+                                className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors"
+                            >
                                 Subscribe
                             </button>
                         </form>
@@ -102,6 +118,20 @@ export function Footer() {
                             <ArrowUp size={14} />
                         </span>
                     </button>
+                </div>
+
+                {/* Google Translate Widget */}
+                <div className="mt-8 border-t border-gray-900 pt-8 text-center">
+                    <p className="text-gray-600 text-xs mb-2">Select Language</p>
+                    <div id="google_translate_element" className="inline-block"></div>
+                    <script type="text/javascript">
+                        {`
+                        function googleTranslateElementInit() {
+                            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+                        }
+                        `}
+                    </script>
+                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
                 </div>
             </div>
         </footer>

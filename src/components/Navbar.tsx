@@ -54,46 +54,69 @@ export function Navbar() {
                             </a>
                         ))}
 
-                        {/* Language Selector - Styled to match Navbar */}
-                        <div className="ml-6 flex items-center relative">
+                        {/* Language Selector - Fixed Layout */}
+                        <div className="ml-6 flex items-center relative z-50">
                             <div id="google_translate_element"></div>
 
-                            {/* Custom CSS to force-style the Google Widget */}
                             <style dangerouslySetInnerHTML={{
                                 __html: `
-                                /* Hide the Google Icon */
-                                .goog-te-gadget-icon { 
-                                  display: none !important; 
+                                /* Force the widget to be a simple inline element */
+                                #google_translate_element {
+                                  display: inline-block !important;
+                                  width: auto !important;
                                 }
-                                /* Clean up the main box (Transparent & No Border) */
+                                
+                                /* Style the button box */
                                 .goog-te-gadget-simple { 
                                   background-color: transparent !important; 
                                   border: none !important; 
                                   padding: 0 !important;
+                                  margin: 0 !important;
                                   font-size: 10px !important;
                                   display: flex !important;
                                   align-items: center !important;
                                   cursor: pointer !important;
+                                  white-space: nowrap !important; /* CRITICAL: Prevents text wrapping */
                                 }
-                                /* Fix the text font and color - Adaptive to scroll state */
+                                
+                                /* Style the text "Select Language" - Adaptive to scroll state */
                                 .goog-te-gadget-simple span { 
                                   color: ${scrolled ? '#374151' : '#d1d5db'} !important; 
                                   font-family: inherit !important;
                                   font-weight: 500 !important;
                                   letter-spacing: 0.2em !important; 
                                   text-transform: uppercase !important;
+                                  vertical-align: middle !important;
                                   transition: color 0.3s ease;
                                 }
+                                
                                 .goog-te-gadget-simple span:hover {
                                   color: ${scrolled ? '#000000' : '#ffffff'} !important;
                                 }
-                                /* Hide the 'Powered by' text */
+                                
+                                /* Fix the Arrow Icon */
+                                .goog-te-gadget-simple .goog-te-menu-value {
+                                  margin: 0 !important;
+                                  display: flex !important;
+                                  align-items: center !important;
+                                }
+                                
+                                .goog-te-gadget-simple .goog-te-menu-value span:nth-child(1) {
+                                  margin-right: 4px !important; /* Space between text and arrow */
+                                }
+                                
+                                .goog-te-gadget-simple .goog-te-menu-value span:nth-child(3) {
+                                  display: none !important; /* Hide weird Google divider */
+                                }
+                                
+                                .goog-te-gadget-simple .goog-te-menu-value img {
+                                  display: none !important; /* Hide default arrow image */
+                                }
+                                
+                                /* Hide "Powered by Google" */
                                 .goog-te-gadget {
                                   color: transparent !important;
                                   font-size: 0 !important;
-                                }
-                                .goog-te-gadget div {
-                                  display: inline-block !important;
                                 }
                               `}} />
                             <script type="text/javascript">

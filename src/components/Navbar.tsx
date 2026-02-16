@@ -54,9 +54,48 @@ export function Navbar() {
                             </a>
                         ))}
 
-                        {/* Google Translate Widget */}
-                        <div className="ml-4 flex items-center">
+                        {/* Language Selector - Styled to match Navbar */}
+                        <div className="ml-6 flex items-center relative">
                             <div id="google_translate_element"></div>
+
+                            {/* Custom CSS to force-style the Google Widget */}
+                            <style dangerouslySetInnerHTML={{
+                                __html: `
+                                /* Hide the Google Icon */
+                                .goog-te-gadget-icon { 
+                                  display: none !important; 
+                                }
+                                /* Clean up the main box (Transparent & No Border) */
+                                .goog-te-gadget-simple { 
+                                  background-color: transparent !important; 
+                                  border: none !important; 
+                                  padding: 0 !important;
+                                  font-size: 10px !important;
+                                  display: flex !important;
+                                  align-items: center !important;
+                                  cursor: pointer !important;
+                                }
+                                /* Fix the text font and color - Adaptive to scroll state */
+                                .goog-te-gadget-simple span { 
+                                  color: ${scrolled ? '#374151' : '#d1d5db'} !important; 
+                                  font-family: inherit !important;
+                                  font-weight: 500 !important;
+                                  letter-spacing: 0.2em !important; 
+                                  text-transform: uppercase !important;
+                                  transition: color 0.3s ease;
+                                }
+                                .goog-te-gadget-simple span:hover {
+                                  color: ${scrolled ? '#000000' : '#ffffff'} !important;
+                                }
+                                /* Hide the 'Powered by' text */
+                                .goog-te-gadget {
+                                  color: transparent !important;
+                                  font-size: 0 !important;
+                                }
+                                .goog-te-gadget div {
+                                  display: inline-block !important;
+                                }
+                              `}} />
                             <script type="text/javascript">
                                 {`
                                 function googleTranslateElementInit() {
@@ -72,11 +111,6 @@ export function Navbar() {
                                 `}
                             </script>
                             <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                            <style>{`
-                                .goog-te-gadget-simple { background-color: transparent !important; border: none !important; }
-                                .goog-te-gadget-icon { display: none !important; }
-                                .goog-te-menu-value span { color: inherit !important; font-family: 'Times New Roman', serif; font-size: 10px; text-transform: uppercase; letter-spacing: 0.2em; }
-                            `}</style>
                         </div>
                     </div>
 

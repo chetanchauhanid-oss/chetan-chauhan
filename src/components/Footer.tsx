@@ -76,15 +76,13 @@ export function Footer() {
                         <p className="font-sans text-sm text-zinc-400">
                             Subscribe to stay updated on our latest projects and design insights.
                         </p>
+                        
+                        {/* --- NEWSLETTER FORM (UPDATED) --- */}
                         <form
-                            name="newsletter"
+                            action="https://formspree.io/f/xpqjrgze"
                             method="POST"
-                            action="/success.html"
-                            data-netlify="true"
                             className="space-y-4"
                         >
-                            <input type="hidden" name="form-name" value="newsletter" />
-
                             <div className="relative">
                                 <input
                                     type="email"

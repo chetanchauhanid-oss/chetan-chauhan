@@ -46,8 +46,8 @@ export function ContactForm() {
                             <div className="space-y-4 pt-8">
                                 <div className="flex flex-col">
                                     <span className="text-[10px] uppercase tracking-widest text-zinc-400">Email</span>
-                                    <a href="mailto:chetan.chauhan.id@gmail.com" className="text-zinc-900 font-serif text-xl hover:text-yellow-600 transition-colors">
-                                        chetan.chauhan.id@gmail.com
+                                    <a href="mailto:contact.kias.in@gmail.com" className="text-zinc-900 font-serif text-xl hover:text-yellow-600 transition-colors">
+                                        contact.kias.in@gmail.com
                                     </a>
                                 </div>
                                 <div className="flex flex-col">
@@ -61,15 +61,13 @@ export function ContactForm() {
 
                         {/* Right Side: The Form (NOW PURE BLACK with GOLD Lines) */}
                         <div className="bg-black p-8 md:p-12 border border-zinc-800 shadow-2xl relative overflow-hidden">
+                            
+                            {/* FORMSPREE INTEGRATION ACTIVE */}
                             <form
-                                name="inquiry"
+                                action="https://formspree.io/f/mojnwzgr"
                                 method="POST"
-                                action="/success.html"
-                                data-netlify="true"
                                 className="space-y-6"
                             >
-                                <input type="hidden" name="form-name" value="inquiry" />
-
                                 {/* Name */}
                                 <div>
                                     <label className="block text-sm font-medium text-zinc-400 mb-2">Full Name</label>

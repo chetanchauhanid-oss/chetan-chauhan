@@ -1,14 +1,34 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 
 export function ContactForm() {
+    // This "State" creates the memory for your form so you can type
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: ""
+    });
+
+    // This function updates the memory whenever you press a key
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="max-w-4xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                        {/* Left Side: Text */}
                         <div className="space-y-8">
                             <div className="space-y-4">
                                 <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase block">
@@ -39,6 +59,7 @@ export function ContactForm() {
                             </div>
                         </div>
 
+                        {/* Right Side: The Form */}
                         <div className="bg-zinc-50 p-8 md:p-12 border border-zinc-100 shadow-sm relative overflow-hidden">
                             <form
                                 name="inquiry"
@@ -52,31 +73,56 @@ export function ContactForm() {
                                 {/* Name */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                                    <input type="text" name="name" required placeholder="Enter your name" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none" />
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        required
+                                        placeholder="Enter your name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none"
+                                    />
                                 </div>
 
                                 {/* Email */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                                    <input type="email" name="email" required placeholder="Enter your email" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none" />
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        required
+                                        placeholder="Enter your email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none"
+                                    />
                                 </div>
 
                                 {/* Phone */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
-                                    <input type="tel" name="phone" placeholder="Enter your phone number" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none" />
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        placeholder="Enter your phone number"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none"
+                                    />
                                 </div>
 
-                                {/* Dropdown Service - KEEPING THIS */}
+                                {/* Dropdown Service */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
                                     <div className="relative">
                                         <select
                                             name="service"
                                             required
+                                            value={formData.service}
+                                            onChange={handleChange}
                                             className="appearance-none w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-black transition-colors rounded-none"
                                         >
-                                            <option value="" disabled selected>Select a project type...</option>
+                                            <option value="" disabled>Select a project type...</option>
                                             <option value="Residential">Residential Design</option>
                                             <option value="Commercial">Commercial/Office</option>
                                             <option value="Hospitality">Hospitality</option>
@@ -91,7 +137,15 @@ export function ContactForm() {
                                 {/* Message */}
                                 <div>
                                     <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
-                                    <textarea name="message" required rows={4} placeholder="Tell us about your project" className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none resize-none"></textarea>
+                                    <textarea
+                                        name="message"
+                                        required
+                                        rows={4}
+                                        placeholder="Tell us about your project"
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none resize-none"
+                                    ></textarea>
                                 </div>
 
                                 <button

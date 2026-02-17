@@ -19,12 +19,20 @@ export function ContactForm() {
         }));
     };
 
-    // FORCE TEXT TO BE BLACK using both Tailwind and Inline Styles
-    const inputStyle = "w-full border-b border-gray-300 py-3 text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none relative z-10";
-    const forceBlack = { color: 'black' }; 
+    // We use "!text-black" which tells Tailwind to override other rules
+    const inputStyle = "w-full border-b border-gray-300 py-3 !text-black !text-opacity-100 placeholder-gray-500 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none relative z-10";
 
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
+            {/* THIS STYLE TAG FORCES THE BROWSER TO USE BLACK TEXT NO MATTER WHAT */}
+            <style jsx>{`
+                #contact input, #contact textarea, #contact select {
+                    color: #000000 !important;
+                    -webkit-text-fill-color: #000000 !important; /* Fix for Chrome Autofill */
+                    opacity: 1 !important;
+                }
+            `}</style>
+
             <div className="container mx-auto px-6">
                 <div className="max-w-4xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -81,7 +89,6 @@ export function ContactForm() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         className={inputStyle}
-                                        style={forceBlack}
                                     />
                                 </div>
 
@@ -96,7 +103,6 @@ export function ContactForm() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         className={inputStyle}
-                                        style={forceBlack}
                                     />
                                 </div>
 
@@ -110,7 +116,6 @@ export function ContactForm() {
                                         value={formData.phone}
                                         onChange={handleChange}
                                         className={inputStyle}
-                                        style={forceBlack}
                                     />
                                 </div>
 
@@ -124,7 +129,6 @@ export function ContactForm() {
                                             value={formData.service}
                                             onChange={handleChange}
                                             className={inputStyle}
-                                            style={forceBlack}
                                         >
                                             <option value="" disabled>Select a project type...</option>
                                             <option value="Residential">Residential Design</option>
@@ -146,7 +150,6 @@ export function ContactForm() {
                                         value={formData.message}
                                         onChange={handleChange}
                                         className={inputStyle}
-                                        style={forceBlack}
                                     ></textarea>
                                 </div>
 

@@ -19,17 +19,16 @@ export function ContactForm() {
         }));
     };
 
-    // DARK MODE INPUT STYLE
-    // We let the text be White (default), but we make the background transparent
-    // and the borders light grey so they show up on the black card.
-    const inputStyle = "w-full border-b border-zinc-600 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors bg-transparent rounded-none relative z-10";
+    // LUXURY STYLE:
+    // Pure Black Background, White Text, Gold Borders
+    const inputStyle = "w-full border-b border-yellow-600 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors bg-transparent rounded-none relative z-10";
 
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="max-w-4xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                        {/* Left Side: Text (Keeps White Background) */}
+                        {/* Left Side: Text (Keeps White Background for contrast) */}
                         <div className="space-y-8">
                             <div className="space-y-4">
                                 <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase block text-yellow-600">
@@ -60,8 +59,8 @@ export function ContactForm() {
                             </div>
                         </div>
 
-                        {/* Right Side: The Form (NOW DARK THEME) */}
-                        <div className="bg-zinc-900 p-8 md:p-12 border border-zinc-800 shadow-2xl relative overflow-hidden">
+                        {/* Right Side: The Form (NOW PURE BLACK with GOLD Lines) */}
+                        <div className="bg-black p-8 md:p-12 border border-zinc-800 shadow-2xl relative overflow-hidden">
                             <form
                                 name="inquiry"
                                 method="POST"
@@ -122,7 +121,7 @@ export function ContactForm() {
                                             value={formData.service}
                                             onChange={handleChange}
                                             className={inputStyle}
-                                            style={{ backgroundColor: '#18181b' }} // Dark background for dropdown options
+                                            style={{ backgroundColor: '#000000', color: 'white' }}
                                         >
                                             <option value="" disabled>Select a project type...</option>
                                             <option value="Residential">Residential Design</option>
@@ -149,7 +148,7 @@ export function ContactForm() {
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-white text-black py-4 uppercase tracking-widest text-xs hover:bg-zinc-200 transition-all duration-300 font-bold"
+                                    className="w-full bg-yellow-600 text-black py-4 uppercase tracking-widest text-xs hover:bg-white transition-all duration-300 font-bold"
                                 >
                                     Send Inquiry
                                 </button>

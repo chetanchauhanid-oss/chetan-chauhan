@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Send } from "lucide-react";
 
 export function ContactForm() {
     const [formData, setFormData] = useState({
@@ -21,8 +19,9 @@ export function ContactForm() {
         }));
     };
 
-    // Common style for all inputs to ensure they are visible and clickable
-    const inputStyle = "w-full border-b border-gray-300 py-3 text-black focus:outline-none focus:border-black transition-colors bg-transparent rounded-none relative z-10";
+    // FORCE TEXT TO BE BLACK using both Tailwind and Inline Styles
+    const inputStyle = "w-full border-b border-gray-300 py-3 text-black placeholder-gray-500 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none relative z-10";
+    const forceBlack = { color: 'black' }; 
 
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
@@ -32,7 +31,7 @@ export function ContactForm() {
                         {/* Left Side: Text */}
                         <div className="space-y-8">
                             <div className="space-y-4">
-                                <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase block">
+                                <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase block text-yellow-600">
                                     Connect
                                 </span>
                                 <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl tracking-tight text-zinc-900">
@@ -47,13 +46,13 @@ export function ContactForm() {
                             <div className="space-y-4 pt-8">
                                 <div className="flex flex-col">
                                     <span className="text-[10px] uppercase tracking-widest text-zinc-400">Email</span>
-                                    <a href="mailto:chetan.chauhan.id@gmail.com" className="text-zinc-900 font-serif text-xl hover:text-gold transition-colors">
+                                    <a href="mailto:chetan.chauhan.id@gmail.com" className="text-zinc-900 font-serif text-xl hover:text-yellow-600 transition-colors">
                                         chetan.chauhan.id@gmail.com
                                     </a>
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-[10px] uppercase tracking-widest text-zinc-400">Inquiries</span>
-                                    <a href="tel:+919558131402" className="text-zinc-900 font-serif text-xl hover:text-gold transition-colors">
+                                    <a href="tel:+919558131402" className="text-zinc-900 font-serif text-xl hover:text-yellow-600 transition-colors">
                                         (+91) 95581 31402
                                     </a>
                                 </div>
@@ -82,6 +81,7 @@ export function ContactForm() {
                                         value={formData.name}
                                         onChange={handleChange}
                                         className={inputStyle}
+                                        style={forceBlack}
                                     />
                                 </div>
 
@@ -96,6 +96,7 @@ export function ContactForm() {
                                         value={formData.email}
                                         onChange={handleChange}
                                         className={inputStyle}
+                                        style={forceBlack}
                                     />
                                 </div>
 
@@ -109,6 +110,7 @@ export function ContactForm() {
                                         value={formData.phone}
                                         onChange={handleChange}
                                         className={inputStyle}
+                                        style={forceBlack}
                                     />
                                 </div>
 
@@ -121,7 +123,8 @@ export function ContactForm() {
                                             required
                                             value={formData.service}
                                             onChange={handleChange}
-                                            className="appearance-none w-full bg-transparent border-b border-gray-300 py-3 text-black focus:outline-none focus:border-black transition-colors rounded-none relative z-10"
+                                            className={inputStyle}
+                                            style={forceBlack}
                                         >
                                             <option value="" disabled>Select a project type...</option>
                                             <option value="Residential">Residential Design</option>
@@ -129,9 +132,6 @@ export function ContactForm() {
                                             <option value="Hospitality">Hospitality</option>
                                             <option value="Other">Other</option>
                                         </select>
-                                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-400">
-                                            <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -146,6 +146,7 @@ export function ContactForm() {
                                         value={formData.message}
                                         onChange={handleChange}
                                         className={inputStyle}
+                                        style={forceBlack}
                                     ></textarea>
                                 </div>
 

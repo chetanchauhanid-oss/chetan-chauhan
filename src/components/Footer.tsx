@@ -1,10 +1,40 @@
 "use client";
 
-import { Instagram, Linkedin, MessageCircle, ArrowUp } from "lucide-react";
+import { useState } from "react";
+import { Instagram, Linkedin, MessageCircle, ArrowUp, CheckCircle } from "lucide-react";
 
 export function Footer() {
+    const [submitting, setSubmitting] = useState(false);
+    const [succeeded, setSucceeded] = useState(false);
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleSubscribe = async (e: any) => {
+        e.preventDefault(); // Stop the redirect!
+        setSubmitting(true);
+        
+        const form = e.target;
+        const data = new FormData(form);
+
+        try {
+            const response = await fetch("https://formspree.io/f/xpqjrgze", {
+                method: "POST",
+                body: data,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setSucceeded(true);
+                form.reset();
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+        setSubmitting(false);
     };
 
     return (
@@ -77,29 +107,34 @@ export function Footer() {
                             Subscribe to stay updated on our latest projects and design insights.
                         </p>
                         
-                        {/* --- NEWSLETTER FORM (UPDATED) --- */}
-                        <form
-                            action="https://formspree.io/f/xpqjrgze"
-                            method="POST"
-                            className="space-y-4"
-                        >
-                            <div className="relative">
-                                <input
-                                    type="email"
-                                    name="email"
-                                    placeholder="Email Address"
-                                    required
-                                    className="w-full bg-transparent border-b border-gray-800 py-2 text-gray-300 focus:outline-none focus:border-gold-500 transition-colors placeholder-gray-600"
-                                />
+                        {/* --- SMART NEWSLETTER FORM --- */}
+                        {succeeded ? (
+                            <div className="flex items-center gap-2 text-gold text-sm py-2">
+                                <CheckCircle size={16} />
+                                <span>Thank you for subscribing!</span>
                             </div>
+                        ) : (
+                            <form onSubmit={handleSubscribe} className="space-y-4">
+                                <div className="relative">
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        placeholder="Email Address"
+                                        required
+                                        disabled={submitting}
+                                        className="w-full bg-transparent border-b border-gray-800 py-2 text-gray-300 focus:outline-none focus:border-gold-500 transition-colors placeholder-gray-600 disabled:opacity-50"
+                                    />
+                                </div>
 
-                            <button
-                                type="submit"
-                                className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors"
-                            >
-                                Subscribe
-                            </button>
-                        </form>
+                                <button
+                                    type="submit"
+                                    disabled={submitting}
+                                    className="text-xs uppercase tracking-widest text-gray-500 hover:text-white transition-colors disabled:opacity-50"
+                                >
+                                    {submitting ? "..." : "Subscribe"}
+                                </button>
+                            </form>
+                        )}
                     </div>
                 </div>
 

@@ -11,7 +11,8 @@ export function ContactForm() {
         message: ""
     });
 
-    const handleChange = (e) => {
+    // FIXED: Added ": any" to satisfy the Strict TypeScript Police
+    const handleChange = (e: any) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
             ...prev,
@@ -19,8 +20,7 @@ export function ContactForm() {
         }));
     };
 
-    // LUXURY STYLE:
-    // Pure Black Background, White Text, Gold Borders
+    // LUXURY GOLD STYLE: Black Background, White Text, Gold Borders
     const inputStyle = "w-full border-b border-yellow-600 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors bg-transparent rounded-none relative z-10";
 
     return (

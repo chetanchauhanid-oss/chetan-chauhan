@@ -19,24 +19,17 @@ export function ContactForm() {
         }));
     };
 
-    // --- THE FIX ---
-    // This "Style Object" forces the browser to behave
-    const forcedBlackStyle = {
-        color: '#000000',                  // Standard CSS Black
-        backgroundColor: '#ffffff',        // Force White Background
-        colorScheme: 'light',              // Tells Chrome: "This is a light box, use dark text!"
-        WebkitTextFillColor: '#000000',    // Force Chrome Autofill text to be black
-        opacity: 1
-    };
-
-    const inputClasses = "w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors rounded-none relative z-10";
+    // DARK MODE INPUT STYLE
+    // We let the text be White (default), but we make the background transparent
+    // and the borders light grey so they show up on the black card.
+    const inputStyle = "w-full border-b border-zinc-600 py-3 text-white placeholder-zinc-500 focus:outline-none focus:border-white transition-colors bg-transparent rounded-none relative z-10";
 
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
             <div className="container mx-auto px-6">
                 <div className="max-w-4xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                        {/* Left Side: Text */}
+                        {/* Left Side: Text (Keeps White Background) */}
                         <div className="space-y-8">
                             <div className="space-y-4">
                                 <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase block text-yellow-600">
@@ -67,8 +60,8 @@ export function ContactForm() {
                             </div>
                         </div>
 
-                        {/* Right Side: The Form */}
-                        <div className="bg-zinc-50 p-8 md:p-12 border border-zinc-100 shadow-sm relative overflow-hidden">
+                        {/* Right Side: The Form (NOW DARK THEME) */}
+                        <div className="bg-zinc-900 p-8 md:p-12 border border-zinc-800 shadow-2xl relative overflow-hidden">
                             <form
                                 name="inquiry"
                                 method="POST"
@@ -80,7 +73,7 @@ export function ContactForm() {
 
                                 {/* Name */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                                    <label className="block text-sm font-medium text-zinc-400 mb-2">Full Name</label>
                                     <input
                                         type="text"
                                         name="name"
@@ -88,14 +81,13 @@ export function ContactForm() {
                                         placeholder="Enter your name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className={inputClasses}
-                                        style={forcedBlackStyle}
+                                        className={inputStyle}
                                     />
                                 </div>
 
                                 {/* Email */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                    <label className="block text-sm font-medium text-zinc-400 mb-2">Email Address</label>
                                     <input
                                         type="email"
                                         name="email"
@@ -103,36 +95,34 @@ export function ContactForm() {
                                         placeholder="Enter your email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className={inputClasses}
-                                        style={forcedBlackStyle}
+                                        className={inputStyle}
                                     />
                                 </div>
 
                                 {/* Phone */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                                    <label className="block text-sm font-medium text-zinc-400 mb-2">Phone Number</label>
                                     <input
                                         type="tel"
                                         name="phone"
                                         placeholder="Enter your phone number"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        className={inputClasses}
-                                        style={forcedBlackStyle}
+                                        className={inputStyle}
                                     />
                                 </div>
 
                                 {/* Dropdown Service */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Project Type</label>
+                                    <label className="block text-sm font-medium text-zinc-400 mb-2">Project Type</label>
                                     <div className="relative">
                                         <select
                                             name="service"
                                             required
                                             value={formData.service}
                                             onChange={handleChange}
-                                            className={inputClasses}
-                                            style={forcedBlackStyle}
+                                            className={inputStyle}
+                                            style={{ backgroundColor: '#18181b' }} // Dark background for dropdown options
                                         >
                                             <option value="" disabled>Select a project type...</option>
                                             <option value="Residential">Residential Design</option>
@@ -145,7 +135,7 @@ export function ContactForm() {
 
                                 {/* Message */}
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                                    <label className="block text-sm font-medium text-zinc-400 mb-2">Message</label>
                                     <textarea
                                         name="message"
                                         required
@@ -153,14 +143,13 @@ export function ContactForm() {
                                         placeholder="Tell us about your project"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        className={inputClasses}
-                                        style={forcedBlackStyle}
+                                        className={inputStyle}
                                     ></textarea>
                                 </div>
 
                                 <button
                                     type="submit"
-                                    className="w-full bg-black text-white py-4 uppercase tracking-widest text-xs hover:bg-gray-800 transition-all duration-300"
+                                    className="w-full bg-white text-black py-4 uppercase tracking-widest text-xs hover:bg-zinc-200 transition-all duration-300 font-bold"
                                 >
                                     Send Inquiry
                                 </button>

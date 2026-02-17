@@ -92,3 +92,24 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--gold);
 }
+/* --- NUCLEAR OPTION: FORCE HIDE GOOGLE LOGO --- */
+.goog-logo-link, .goog-logo-link img, img.goog-te-gadget-icon {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    opacity: 0 !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+    font-size: 0 !important;
+}
+
+/* Make sure the dropdown itself is still visible */
+.goog-te-gadget .goog-te-combo {
+    color: #333 !important;
+    font-size: 14px !important;
+    padding: 6px !important;
+    display: inline-block !important;
+}

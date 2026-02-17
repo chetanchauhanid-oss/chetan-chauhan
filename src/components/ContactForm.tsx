@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Send } from "lucide-react";
 
 export function ContactForm() {
-    // This "State" creates the memory for your form so you can type
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -14,7 +13,6 @@ export function ContactForm() {
         message: ""
     });
 
-    // This function updates the memory whenever you press a key
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -22,6 +20,9 @@ export function ContactForm() {
             [name]: value
         }));
     };
+
+    // Common style for all inputs to ensure they are visible and clickable
+    const inputStyle = "w-full border-b border-gray-300 py-3 text-black focus:outline-none focus:border-black transition-colors bg-transparent rounded-none relative z-10";
 
     return (
         <section id="contact" className="py-24 bg-white relative overflow-hidden">
@@ -80,7 +81,7 @@ export function ContactForm() {
                                         placeholder="Enter your name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none"
+                                        className={inputStyle}
                                     />
                                 </div>
 
@@ -94,7 +95,7 @@ export function ContactForm() {
                                         placeholder="Enter your email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none"
+                                        className={inputStyle}
                                     />
                                 </div>
 
@@ -107,7 +108,7 @@ export function ContactForm() {
                                         placeholder="Enter your phone number"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none"
+                                        className={inputStyle}
                                     />
                                 </div>
 
@@ -120,7 +121,7 @@ export function ContactForm() {
                                             required
                                             value={formData.service}
                                             onChange={handleChange}
-                                            className="appearance-none w-full bg-transparent border-b border-gray-300 py-3 text-gray-900 focus:outline-none focus:border-black transition-colors rounded-none"
+                                            className="appearance-none w-full bg-transparent border-b border-gray-300 py-3 text-black focus:outline-none focus:border-black transition-colors rounded-none relative z-10"
                                         >
                                             <option value="" disabled>Select a project type...</option>
                                             <option value="Residential">Residential Design</option>
@@ -144,7 +145,7 @@ export function ContactForm() {
                                         placeholder="Tell us about your project"
                                         value={formData.message}
                                         onChange={handleChange}
-                                        className="w-full border-b border-gray-300 py-3 focus:outline-none focus:border-black transition-colors bg-transparent rounded-none resize-none"
+                                        className={inputStyle}
                                     ></textarea>
                                 </div>
 

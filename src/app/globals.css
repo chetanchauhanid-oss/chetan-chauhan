@@ -113,25 +113,38 @@ body {
     padding: 6px !important;
     display: inline-block !important;
 }
-/* --- KILL GOOGLE TRANSLATE BANNER & POPUPS --- */
-.skiptranslate > iframe.goog-te-banner-frame {
+/* --- KILL GOOGLE TRANSLATE BANNER & POPUPS (NUCLEAR VERSION 2.0) --- */
+
+/* Hide the old banner frame */
+iframe.goog-te-banner-frame {
     display: none !important;
-    box-shadow: none !important;
+    visibility: hidden !important;
 }
 
+/* Hide the modern Google banner (The white bar at the top) */
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Hide the modern Google banner alternative class */
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+/* Force the website to stay at the absolute top so Google can't push it down */
 body {
     top: 0px !important;
     position: static !important;
 }
 
-.goog-tooltip {
+/* Hide the hover popups and tooltips */
+#goog-gt-tt, .goog-te-balloon-frame {
     display: none !important;
 }
 
-.goog-tooltip:hover {
-    display: none !important;
-}
-
+/* Remove the yellow highlight over translated text */
 .goog-text-highlight {
     background-color: transparent !important;
     border: none !important;

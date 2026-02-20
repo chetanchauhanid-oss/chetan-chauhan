@@ -113,3 +113,32 @@ body {
     padding: 6px !important;
     display: inline-block !important;
 }
+/* --- KILL GOOGLE TRANSLATE BANNER & POPUPS --- */
+.skiptranslate > iframe.goog-te-banner-frame {
+    display: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    top: 0px !important;
+    position: static !important;
+}
+
+.goog-tooltip {
+    display: none !important;
+}
+
+.goog-tooltip:hover {
+    display: none !important;
+}
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Hide default widget text/dropdown */
+#google_translate_element {
+    display: none !important;
+}

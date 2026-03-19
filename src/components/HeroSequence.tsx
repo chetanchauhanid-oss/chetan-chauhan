@@ -83,21 +83,25 @@ export function HeroSequence() {
                     className="h-full w-full"
                 />
 
-                {/* Overlay Content */}
+               {/* Overlay Content */}
                 <div className="absolute inset-x-0 bottom-24 flex flex-col items-center justify-center text-center">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5 }}
-                        /* ADDED GLASSMORPHISM BACKGROUND HERE */
-                        className="space-y-4 px-10 py-8 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10"
+                        className="space-y-6 px-6 flex flex-col items-center"
                     >
-                        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl tracking-tighter text-white">
+                        {/* Name has a subtle invisible shadow to pop against the bright marble, but no dark box */}
+                        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl tracking-tighter text-white drop-shadow-2xl">
                             CHETAN<br />CHAUHAN
                         </h1>
-                        <p className="font-sans text-sm md:text-base tracking-[0.2em] text-yellow-600 uppercase">
-                            Architectural Excellence • Interior Design
-                        </p>
+                        
+                        {/* The sleek, isolated glassmorphism pill purely for the subtext */}
+                        <div className="inline-block px-8 py-3 bg-black/40 backdrop-blur-md rounded-full border border-white/10 shadow-xl">
+                            <p className="font-sans text-sm md:text-base tracking-[0.2em] text-yellow-600 uppercase">
+                                Architectural Excellence • Interior Design
+                            </p>
+                        </div>
                     </motion.div>
                 </div>
 

@@ -23,7 +23,7 @@ export function Gallery() {
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
                     <div className="space-y-4">
-                        <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase block">
+                        <span className="text-yellow-600 font-sans text-xs tracking-[0.3em] uppercase block">
                             Selected Works
                         </span>
                         <h2 className="font-serif text-5xl md:text-7xl tracking-tighter text-white">
@@ -37,7 +37,7 @@ export function Gallery() {
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
                                 className={`px-10 py-4 text-xs font-sans uppercase tracking-[0.2em] transition-all duration-500 rounded-sm italic ${activeTab === tab
-                                    ? "bg-[#D4AF37] text-zinc-950 font-bold shadow-lg shadow-gold/20 hover:bg-[#c4a031]"
+                                    ? "bg-[#D4AF37] text-zinc-950 font-bold shadow-lg shadow-yellow-600/20 hover:bg-[#c4a031]"
                                     : "bg-transparent text-white border border-white hover:bg-white/10"
                                     }`}
                             >
@@ -65,7 +65,8 @@ export function Gallery() {
                             >
                                 <Image
                                     src={project.featuredImage}
-                                    alt={project.title}
+                                    /* THE FIX: Dynamic SEO Alt Text Injection */
+                                    alt={`Luxury ${project.category} Interior Design and Architecture for ${project.title} in Ahmedabad and Kutch by Chetan Chauhan`}
                                     fill
                                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
                                     onError={(e) => {
@@ -75,7 +76,7 @@ export function Gallery() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
                                     <h3 className="font-serif text-3xl">{project.title}</h3>
-                                    <button className="mt-4 text-[10px] uppercase tracking-[0.2em] border-b border-gold self-start pb-1">
+                                    <button className="mt-4 text-[10px] uppercase tracking-[0.2em] border-b border-yellow-600 self-start pb-1">
                                         View Project
                                     </button>
                                 </div>

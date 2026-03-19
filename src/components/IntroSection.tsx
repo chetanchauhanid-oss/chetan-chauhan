@@ -29,15 +29,15 @@ export function IntroSection() {
                         className="relative aspect-[4/5] bg-zinc-100 overflow-hidden rounded-sm"
                     >
                         <Image
-                            src="/profile/profile.png"
-                            alt="Chetan Chauhan"
-                            fill
-                            className="object-cover"
-                            onError={(e) => {
-                                const target = e.target as HTMLImageElement;
-                                target.src = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop";
-                            }}
-                        />
+    src="/profile/profile.png"
+    alt="Chetan Chauhan - Premium Residential and Commercial Interior Designer in Ahmedabad and Kutch"
+    fill
+    className="object-cover"
+    onError={(e) => {
+        const target = e.target as HTMLImageElement;
+        target.src = "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop";
+    }}
+/>
                         <div className="absolute inset-0 bg-black/10" />
                     </motion.div>
 

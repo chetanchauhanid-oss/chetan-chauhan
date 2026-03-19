@@ -41,7 +41,6 @@ export function HeroSequence() {
                     const index = Math.floor(frameIndex.get());
                     const image = images[index - 1];
                     if (image && image.complete) {
-                        // Draw image with object-fit: cover logic
                         const canvasWidth = canvasRef.current.width;
                         const canvasHeight = canvasRef.current.height;
                         const imgWidth = image.width;
@@ -59,7 +58,6 @@ export function HeroSequence() {
 
         const unsubscribe = frameIndex.onChange(render);
 
-        // Resize handling
         const handleResize = () => {
             if (canvasRef.current) {
                 canvasRef.current.width = window.innerWidth;
@@ -91,12 +89,13 @@ export function HeroSequence() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.5 }}
-                        className="space-y-4 px-6"
+                        /* ADDED GLASSMORPHISM BACKGROUND HERE */
+                        className="space-y-4 px-10 py-8 bg-black/40 backdrop-blur-md rounded-2xl border border-white/10"
                     >
                         <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl tracking-tighter text-white">
                             CHETAN<br />CHAUHAN
                         </h1>
-                        <p className="font-sans text-sm md:text-base tracking-[0.2em] text-gold uppercase">
+                        <p className="font-sans text-sm md:text-base tracking-[0.2em] text-yellow-600 uppercase">
                             Architectural Excellence • Interior Design
                         </p>
                     </motion.div>
@@ -112,7 +111,7 @@ export function HeroSequence() {
                 )}
 
                 <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-gold to-transparent animate-pulse" />
+                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-yellow-600 to-transparent animate-pulse" />
                 </div>
             </div>
         </div>

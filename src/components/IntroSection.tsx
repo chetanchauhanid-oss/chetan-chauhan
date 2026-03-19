@@ -17,7 +17,8 @@ export function IntroSection() {
     const xRight = useTransform(scrollYProgress, [0, 0.3], [100, 0]);
 
     return (
-        <section id="about" ref={targetRef} className="relative min-h-screen bg-white py-24 overflow-hidden">
+        /* REMOVED MIN-H-SCREEN TO FIX MOBILE GAP */
+        <section id="about" ref={targetRef} className="relative bg-white py-20 md:py-32 overflow-hidden">
             <motion.div
                 style={{ opacity, scale }}
                 className="container mx-auto px-6"
@@ -45,7 +46,7 @@ export function IntroSection() {
                         className="space-y-8"
                     >
                         <div className="space-y-4">
-                            <span className="text-gold font-sans text-xs tracking-[0.3em] uppercase block">
+                            <span className="text-yellow-600 font-sans text-xs tracking-[0.3em] uppercase block">
                                 Philosophy
                             </span>
                             <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-tight text-zinc-900">
@@ -53,7 +54,8 @@ export function IntroSection() {
                             </h2>
                         </div>
 
-                        <p className="font-sans text-zinc-600 text-lg leading-relaxed max-w-lg">
+                        {/* ADDED TEXT-JUSTIFY HERE */}
+                        <p className="font-sans text-zinc-600 text-lg leading-relaxed max-w-lg text-justify">
                             With over 18 years of visionary leadership in interior design, Chetan Chauhan has mastered the art of transforming vast spaces into intimate experiences. From executing 30,000 sq. ft. ultra-luxury villas to designing high-performance corporate headquarters, his work stands at the intersection of functional elegance and timeless artistry. Now expanding from Kutch to Ahmedabad and beyond, Chetan brings a global perspective to every square foot he touches.
                         </p>
 
